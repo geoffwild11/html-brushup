@@ -1,0 +1,80 @@
+<html>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	
+	<head>
+		<title>Geoff's WebDev</title>
+	</head>
+	<body>
+		<p>
+			Welcome to the show!
+		</p>
+		<p>
+			<button type="button" onclick="GreetingClick()">Greetings</button>
+		</p>
+		<p id="greetings">
+		</p>
+		<table>
+			<tr>
+				<td id="cell1">0</td><td id="cell2">0</td><td id="cell3">0</td><td id="cell4">0</td><td id="cell5">0</td>
+			</tr>
+		</table>
+		<form  NAME="myform" ACTION="" METHOD="GET">
+			Order Number: <input type="text" name="orderNum">
+			<button type="button" onclick="UpdateTable(this.form)">Update</button>
+		</form>
+		
+		
+
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js">
+			
+		</script>
+		<script>
+
+			// CONSTANTS
+			var COLS = 5;
+
+			// FUNCTIONS
+			function GreetingClick(){
+				console.log("here");
+				document.getElementById("greetings").innerHTML = "Hello there!";
+				console.log("after greeting");
+			}
+
+			function UpdateTable(form){
+				console.log("Updating table");
+				
+				var temp = document.getElementById("cell1").innerHTML;
+				console.log(temp);
+
+				temp = form.orderNum.value;
+				console.log(temp);
+
+				var inputVal = Number(form.orderNum.value);
+
+				if (form.orderNum.value == 0){
+					inputVal = "a";
+				}
+
+
+				if ( isNaN(inputVal) || inputVal < 1){
+					alert( "Please put a number value greater than 0 for the order number" );
+				}
+
+				else{
+					document.getElementById("cell5").innerHTML = Number(document.getElementById("cell4").innerHTML)
+					document.getElementById("cell4").innerHTML = Number(document.getElementById("cell3").innerHTML)
+					document.getElementById("cell3").innerHTML = Number(document.getElementById("cell2").innerHTML)
+					document.getElementById("cell2").innerHTML = Number(document.getElementById("cell1").innerHTML)
+					document.getElementById("cell1").innerHTML = inputVal;
+				}
+				
+			}
+		</script>
+
+	</body>
+</html>
